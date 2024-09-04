@@ -6,7 +6,7 @@ create_name_file() {
     local file=$1
 
     # Obtener la fecha del archivo
-    fecha=(stat -c "%Y" "$file" | awk '{print $1}' | cut -d' ' -f1)
+    fecha=$(stat -c "%y" "$file" | awk '{print $1}' | cut -d' ' -f1)
     anio=$(date -d "$fecha" "+%Y")
     mes=$(date -d "$fecha" "+%m")
     dia=$(date -d "$fecha" "+%d")
