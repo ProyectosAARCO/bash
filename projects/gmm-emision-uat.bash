@@ -20,19 +20,18 @@ createRar() {
     echo "Creando archivo rar: $nombre_archivo"
 
     # Crear el archivo rar
-    rar a "$nombre_archivo" "$ruta/index.html" "$ruta/vite.svg" "$ruta/assets"
-
-    # Eliminar los archivos y carpetas
-    rm "$ruta/index.html"
-    rm "$ruta/vite.svg"
-    rm -r "$ruta/assets"
+    rar a "$ruta/$nombre_archivo" "$ruta/index.html" "$ruta/vite.svg" "$ruta/assets"
 
     # Verificar que se creó el archivo rar correctamente
-    # if [ -f "$nombre_archivo" ] && [ $(stat -c "%s" "$nombre_archivo") -gt 0 ]; then
-    #     echo "El archivo rar se creó correctamente: $nombre_archivo"
-    # else
-    #     echo "Error: no se creó el archivo rar"
-    # fi
+    if [ -f "$ruta/$nombre_archivo" ] && [ $(stat -c "%s" "$ruta/$nombre_archivo") -gt 0 ]; then
+        # Eliminar los archivos y carpetas
+        rm "$ruta/index.html"
+        rm "$ruta/vite.svg"
+        rm -r "$ruta/assets"
+        echo "El archivo rar se creó correctamente: $nombre_archivo"
+    else
+        echo "Error: no se creó el archivo rar"
+    fi
 }
 
 # Función para publicar en un entorno específico
