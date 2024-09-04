@@ -1,0 +1,12 @@
+if [ -z "$1" ]; then
+        echo "Hace falta parametros."
+        exit 1
+fi
+
+
+if command -v curl &> /dev/null; then
+        bash <(curl -s https://raw.githubusercontent.com/ProyectosAARCO/bash/main/projects/gmm-emision-uat.bash) "$1"
+else
+        echo "Error: el comando curl no está disponible"
+        exit 1
+fi
