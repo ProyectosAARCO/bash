@@ -24,7 +24,7 @@ createRar() {
     local ruta=$1
 
     # Crear el nombre del archivo rar
-    local nombre_archivo=$(create_name_file $ruta)
+    local nombre_archivo=$(create_name_file "$ruta/index.html")
 
     echo "Creando archivo rar: $nombre_archivo"
 
