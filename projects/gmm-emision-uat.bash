@@ -1,21 +1,30 @@
 #! /bin/bash 
 
-# Funcion para crear el archivo rar con la versión publicada y eliminar versión.
-createRar() {
-    # Ruta de la carpeta de publicaciones
-    local ruta=$1
-    
-    # Obtener la fecha del archivo index.html
-    fecha=$(stat -c "%y" "$ruta/index.html" | awk '{print $1}' | cut -d' ' -f1)
+# Funcion para crear el nombre del archivo
+create_name_file() {
+    # Nombre del archivo
+    local file=$1
+
+    # Obtener la fecha del archivo
+    fecha=(stat -c "%Y" "$file" | awk '{print $1}' | cut -d' ' -f1)
     anio=$(date -d "$fecha" "+%Y")
     mes=$(date -d "$fecha" "+%m")
     dia=$(date -d "$fecha" "+%d")
     hora=$(date -d "$fecha" "+%H")
     minuto=$(date -d "$fecha" "+%M")
     segundo=$(date -d "$fecha" "+%S")
+    # Crear el nombre del archivo rar
+    local nombre_archivo="gmm-emision@$anio-$mes-$dia-$hora-$minuto-$segundo.rar"
+    echo $nombre_archivo
+}
+
+# Funcion para crear el archivo rar con la versión publicada y eliminar versión.
+createRar() {
+    # Ruta de la carpeta de publicaciones
+    local ruta=$1
 
     # Crear el nombre del archivo rar
-    nombre_archivo="gmm-emision@$anio-$mes-$dia-$hora-$minuto-$segundo.rar"
+    local nombre_archivo=$(create_name_file $ruta)
 
     echo "Creando archivo rar: $nombre_archivo"
 
