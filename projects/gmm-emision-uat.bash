@@ -28,11 +28,11 @@ createRar() {
     rm -r "$ruta/assets"
 
     # Verificar que se creó el archivo rar correctamente
-    if [ -f "$nombre_archivo" ] && [ $(stat -c "%s" "$nombre_archivo") -gt 0 ]; then
-        echo "El archivo rar se creó correctamente: $nombre_archivo"
-    else
-        echo "Error: no se creó el archivo rar"
-    fi
+    # if [ -f "$nombre_archivo" ] && [ $(stat -c "%s" "$nombre_archivo") -gt 0 ]; then
+    #     echo "El archivo rar se creó correctamente: $nombre_archivo"
+    # else
+    #     echo "Error: no se creó el archivo rar"
+    # fi
 }
 
 # Función para publicar en un entorno específico
