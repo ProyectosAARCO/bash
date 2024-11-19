@@ -6,6 +6,12 @@ sudo mount -t drvfs A: /mnt/w1
 sudo mkdir -p /mnt/w2
 sudo mount -t drvfs B: /mnt/w2
 
+sudo mkdir -p /mnt/asegurometro
+sudo mount -t drvfs Y: /mnt/asegurometro
+
+sudo mkdir -p /mnt/z
+sudo mount -t drvfs Z: /mnt/z
+
 for dirve in {A...Z}; do
   if [[ -e /mnt/$drive ]]; then
     echo "La unidad $drive ya está montada"
